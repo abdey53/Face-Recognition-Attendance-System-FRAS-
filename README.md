@@ -5,14 +5,13 @@
       <img src="https://github.com/user-attachments/assets/22989036-94af-4c51-a95d-c311a37e4b41" width="100%" />
     </td>
     <td width="50%">
-      <h2>🎯 What is FRAS</h2>
+      <h1>🎯 What is Face-Recognition-Attendance-System (FRAS)</h1>
       <p>
         Face-Recognition-Attendance-System (FRAS) is a project that automates attendance marking 
         using face recognition. It captures images via a webcam (or camera), recognizes registered 
         faces, and marks attendance — removing manual roll calls, reducing errors, and saving time.
       </p>
-    </td>
-  </tr>
+      </tr>
 </table>
 
 ## 🧰 Technologies / Libraries Used  
