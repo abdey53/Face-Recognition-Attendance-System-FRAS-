@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance Records</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      font-size: 16px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(79, 172, 254, 0.5);
+    }
+
+    .back-button {
+      margin-bottom: 25px;
+    }
+
+    .filter-section {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .filter-section form {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input[type="date"] {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      background-color: #f9f9f9;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
+      font-weight: 700;
+    }
+
+    td {
+      background-color: #fbfdff;
+    }
+
+    tr:hover td {
+      background-color: #eef7ff;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 92%;
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .filter-section form {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      input[type="date"] {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Back Button -->
+    <a href="/" class="btn back-button">⬅️ Go Back</a>
+
+    <!-- Title -->
+    <h1>📋 Attendance Records</h1>
+
+    <!-- Date Filter Form -->
+    <div class="filter-section">
+      <form action="/attendance" method="GET">
+        <input type="date" name="filter_date" value="{{ filter_date }}">
+        <button type="submit" class="btn">Filter</button>
+        <a href="/attendance" class="btn">Show All</a>
+      </form>
+    </div>
+
+    <!-- Attendance Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in attendance %}
+        <tr>
+          <td>{{ row.id }}</td>
+          <td>{{ row.user_id }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.date }}</td>
+          <td>{{ row.time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
